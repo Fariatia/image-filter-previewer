@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Filter Previewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 300px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Image Filter Previewer</h2>
+  <img id="image" src="https://via.placeholder.com/500" alt="Sample Image">
+
+  <div>
+    <label>Blur: <input type="range" id="blur" min="0" max="10" step="1" value="0" oninput="applyFilters()"></label><br>
+    <label>Grayscale: <input type="range" id="grayscale" min="0" max="100" step="1" value="0" oninput="applyFilters()"></label><br>
+    <label>Brightness: <input type="range" id="brightness" min="50" max="150" step="10" value="100" oninput="applyFilters()"></label><br>
+    <label>Contrast: <input type="range" id="contrast" min="50" max="150" step="10" value="100" oninput="applyFilters()"></label>
+  </div>
+
+  <script>
+    function applyFilters() {
+      const blur = document.getElementById('blur').value;
+      const grayscale = document.getElementById('grayscale').value;
+      const brightness = document.getElementById('brightness').value;
+      const contrast = document.getElementById('contrast').value;
+//why???????.......
+      const image = document.getElementById('image');
+      image.style.filter = `
+        blur(${blur}px)
+        grayscale(${grayscale}%)
+        brightness(${brightness}%)
+        contrast(${contrast}%)
+      `;
+    }
+  </script>
+
+</body>
+</html>
